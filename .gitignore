@@ -1,7 +1,7 @@
 node_modules/
+bower_components/
 gh_pages/
 build/
-dist/
 dependencies/compiled/*.*
 test/runner.html
 .DS_Store
