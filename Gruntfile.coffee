@@ -70,6 +70,13 @@ module.exports = (grunt) ->
           {expand: true, cwd: 'app/assets/font/', src: ['**'], dest: 'gh_pages/font'},
           {expand: true, cwd: 'app/assets/img/', src: ['**'],  dest: 'gh_pages/img'}
         ]
+      dist:
+        files: [
+          expand: true
+          flatten: true
+          src: ['app/assets/img/select2.png', 'app/assets/img/select2x2.png']
+          dest: 'dist/img/'
+        ]
 
     ###
       Watch files for changes.
@@ -158,6 +165,6 @@ module.exports = (grunt) ->
   grunt.registerTask "build_srcs", [ "coffee:srcs", "emberTemplates", "neuter" ]
   grunt.registerTask "build_app", [ "coffee:app", "emberTemplates", "neuter" ]
   if env is "dev"
-    grunt.registerTask "default", [ "build_srcs", "build_app", "less", "copy", "uglify", "watch" ]
+    grunt.registerTask "default", [ "build_srcs", "build_app", "less", "copy", "uglify", "copy:dist", "watch" ]
   else
     grunt.registerTask "default", [ "less", "build_srcs", "uglify"]
