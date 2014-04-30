@@ -10,8 +10,8 @@ set = (object, key, value) ->
 # The view for each item in the select.
 Ember.Widgets.SelectOptionView = Ember.ListItemView.extend
   tagName: 'li'
-  templateName: 'select_item'
-  layoutName: 'select_item_layout'
+  layoutName: 'select-item-layout'
+  templateName: 'select-item'
   classNames: 'ember-select-result-item'
   classNameBindings: ['content.isGroupOption:ember-select-group',
                       'isHighlighted:highlighted']
@@ -54,7 +54,7 @@ Ember.Widgets.SelectOptionView = Ember.ListItemView.extend
 
 Ember.Widgets.SelectComponent =
 Ember.Component.extend Ember.Widgets.BodyEventListener,
-  templateName:       'select'
+  layoutName:         'select'
   classNames:         'ember-select'
   attributeBindings: ['tabindex']
   classNameBindings: ['showDropdown:open']
@@ -102,6 +102,7 @@ Ember.Component.extend Ember.Widgets.BodyEventListener,
   selectedItemView: Ember.computed ->
     @get('itemView').extend
       tagName: 'span'
+      classNames: 'ember-select-item'
       labelPath: Ember.computed.alias 'controller.optionLabelPath'
       context: Ember.computed.alias 'controller.selection'
   .property 'itemView'
